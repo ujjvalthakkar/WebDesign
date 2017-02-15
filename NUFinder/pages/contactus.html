@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Contact Us - NUFinder</title>
+
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap-3.3.7.css">
+  <link rel="shortcut icon" href="../images/logo.jpg" type="image/jpg"/>
+  <script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+  <script type="text/javascript" src="../js/angular-1.4.4.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/footer.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    angular.module('myApp', [])
+    .controller('contactusFormController', ['$scope', function($scope) {
+      $scope.dropdownOptions = {
+        val:null,
+        options: [
+        {id: 'feedback', name: 'Feedback'},
+        {id: 'service', name: 'Customer Service'},
+        {id: 'suggestions', name: 'Suggestions'},
+        {id: 'how', name: 'How it works'}
+        ]
+      };
+    }]);
+  </script>
+  <link rel="stylesheet" type="text/css" href="../css/contactus.css">
+  <style type="text/css">
+    
+
+  </style>
+</head>
+<body>
+
+
+  <!-- Navbar Starts-->
+
+  <nav class="navbar navbar-default navbar-inverse" style="margin-bottom: 0px;border-radius: 0px;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" id="step-one" href="../index.html" style="color:#dcbd2f;font-size: 20px;font-weight: bold;"><span class="glyphicon glyphicon-screenshot" style="color: #dcbd2f;margin-right: 5px;"></span>NUFinder</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+
+          <li class="dropdown">
+           <a href="../index.html">Home</a>
+         </li>
+
+         <li class="dropdown" id="step-two">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="reportItem.html">Report Found Items</a></li>
+           </ul>
+         </li>
+
+         <li class="dropdown" id="step-three">
+           <a href="search.html">Search Item</a>
+         </li>
+
+         <li class="dropdown">
+           <a href="userStories.html">User Stories</a>
+         </li>  
+
+         <li class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href ="feedback.html">Feedback</a></li>
+             <li role="separator" class="divider"></li>
+             <li><a href ="contactus.html">Contact Us</a></li>
+           </ul>
+         </li>   
+         <li class="dropdown">
+          <a href="userRegistration.html">Register</a>
+        </li> 
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron jumbotron-in">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-lg-12">
+        <h1 class="h1">
+          Contact Us <small>Feel free to contact us</small></h1>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div ng-app = "myApp">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <ul class="breadcrumb">
+           <li><a href="../index.html">Home</a></li>
+           <li class="active">Contact Us</li>
+         </ul>
+         <div class="well well-sm">
+          <div ng-controller="contactusFormController">
+            <form name="contactusForm" action="thankyou.html">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">Name:</label><input type="text" class="form-control" id="name" ng-model="name" placeholder="Enter your name" required="required" />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                      </span>
+                      <input type="email" class="form-control" id="email" placeholder="Enter your email" ng-model="email" required="required" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="subject">Subject:</label>
+                    <select name="subject" id="subject" ng-model="dropdownOptions.val" class="form-control" required="required">
+                      <option ng-repeat="option in dropdownOptions.options" value="{{option.id}}">{{option.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">Message:</label>
+                    <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required" ng-model="message" placeholder=" Please enter your Message"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary pull-right" id="submitBtn">
+                    Send Message</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <iframe width="100%" height="285px" frameborder="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2949.1274194639473!2d-71.09136038461213!3d42.33980667918823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e37a1999cf5ce1%3A0xc97b00e66522b98c!2sNortheastern+University!5e0!3m2!1sen!2sus!4v1480565993272"       width="600"  style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-4">
+          <form>
+            <legend><span style="margin-right: 10px;" class="glyphicon glyphicon-globe"></span>Let's Get In Touch!</legend>
+            <address>
+              <strong class="strongFont">NUFinder</strong><br>
+              360 Huntington Ave<br>
+              Boston, MA 02115<br>
+              Phone: (123) 456-7890
+            </address>
+            <address>
+              <strong>Sanket Kumar</strong><br>
+              <a href="mailto:kumar.sank@husky.neu.edu">kumar.sank@husky.neu.edu</a><br>
+              <strong>Richa Bhatia</strong><br>
+              <a href="mailto:bhatia.ri@husky.neu.edu">bhatia.ri@husky.neu.edu</a><br>
+              <strong>Saurabh Salunkhe</strong><br>
+              <a href="mailto:salunkhe.s@husky.neu.edu">salunkhe.s@husky.neu.edu</a><br>
+              <strong>Ujjval Thakkar</strong><br>
+              <a href="mailto:hemantthakkar.u@husky.neu.edu">hemantthakkar.u@husky.neu.edu</a>
+            </address>
+          </form>
+        </div>
+        <div class="col-md-8">
+          <div id="myCarousel" class="carousel slide contactusCarousel" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+              <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="../images/team/sanket.jpg" alt="Sanket Kumar" class="img-responsive carouselImage">                       
+              </div>
+              <div class="item">
+                <img src="../images/team/richa.jpg" alt="Richa Bhatia" class="img-responsive carouselImage">                       
+              </div>
+              <div class="item">
+                <img src="../images/team/ujjval.jpg" alt="Ujjval Thakkar" class="img-responsive carouselImage">                       
+              </div>
+              <div class="item">
+                <img src="../images/team/saurabh.jpg" alt="Saurabh Salunkhe" class="img-responsive carouselImage">                       
+              </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev" style="background: transparent;">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next" style="background: transparent;">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer-distributed">
+    <div class="footer-left">
+      <h3>NU<span>Finder</span></h3>
+      <p class="footer-links">
+        <a href="../index.html">Home</a>
+        ·
+        <a href="userStories.html">Testimonials</a>
+        ·
+        <a href="contactus.html">Contact</a>
+      </p>
+      <p class="footer-company-name">NUFinder © 2016</p>
+    </div>
+    <div class="footer-center">
+      <div>
+        <i class="fa fa-map-marker"></i>
+        <p><span>360 Huntington Ave</span> Boston, MA 02115</p>
+      </div>
+      <div>
+        <i class="fa fa-phone"></i>
+        <p>+1 8575 2206 12</p>
+      </div>
+      <div>
+        <i class="fa fa-envelope"></i>
+        <p><a href="mailto:meanstackdevelopers@gmail.com">meanstackdevelopers@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="footer-right">
+      <p class="footer-company-about">
+        <span>About the company</span>
+        We at NUFinder, aim to help the Northeastern community by locating and reporting all types of lost items.
+      </p>
+      <div class="footer-icons">
+        <a href="https://www.facebook.com/"><img src="../images/facebook.png"></a>
+        <a href="https://www.twitter.com"><img src="../images/twitter.png"></a>
+        <a href="https://www.linkedin.com"><img src="../images/linkedin.png"></a>
+        <a href="https://www.github.io"><img src="../images/github.png"></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

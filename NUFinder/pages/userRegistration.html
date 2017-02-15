@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Registration - NUFinder</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,100,700,900" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap-3.3.7.css">
+  <link rel="stylesheet" type="text/css" href="../css/userRegistration.css">
+  <link rel="shortcut icon" href="../images/logo.jpg" type="image/jpg"/>
+  <!-- <link rel="stylesheet" href="../css/style_UR_US.css"> -->
+  <script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+ <!--  <script type="text/javascript" src="../js/angular-1.4.4.js"></script> -->
+  <script type="text/javascript" src="../js/bootstrap-3.3.7.js"></script>
+  <script type="text/javascript" src="../js/bootstrap-tour.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+  <script type="text/javascript" src="../js/angular-1.4.4.js"></script>
+  <script src="../js/new/angularfire.js"></script>
+   <script src="../js/app.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/footer.css">
+  <script>
+    var config = {
+      apiKey: "AIzaSyBbaKF-ijGLlCvMJOuF2iUHtSv7B80r8N4",
+      authDomain: "contactlist-2392c.firebaseapp.com",
+      databaseURL: "https://contactlist-2392c.firebaseio.com",
+      storageBucket: "contactlist-2392c.appspot.com",
+      messagingSenderId: "74462320695"
+    };
+    firebase.initializeApp(config);
+
+    var myApp = angular.module('myApp', ['firebase']);
+
+    myApp.controller('RegistrationController', ['$scope','$firebaseArray', '$timeout', function($scope, $firebaseArray, $timeout) {
+
+      $scope.regCheckName= /^[a-zA-Z]+$/;
+$scope.regCheckEmail= /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+$scope.regPhone =/[1-9]{1}\d{9}/;
+
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+    // User is signed in.
+    console.log('onAuthStateChanged --> User UID is: '+user.uid);
+    $timeout(function(){
+      $scope.loggedInUserUID = user.uid;
+      console.log('loggedInUserUID in onAuthStateChanged: '+ $scope.loggedInUserUID);
+    },1);
+    
+  } else {
+    // No user is signed in.
+    console.log('onAuthStateChanged --> UID in Null user is: '+user);
+    $timeout(function(){
+      $scope.loggedInUserUID = user;
+    },1);
+  }
+});
+
+      var rootRef = firebase.database().ref();
+
+      $scope.data=$firebaseArray(rootRef);
+
+      console.log('Username in createNewEmailUser function  '+ $scope.email);
+      console.log('Password in createNewEmailUser function: '+ $scope.password);
+
+      $scope.createNewEmailUser=function() {
+        console.log('Inside createNewEmailUser');
+
+        firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password)
+
+
+        .then(function(user){ 
+          console.log('Inside then');
+          console.log('User created successfully!');
+          console.log('UID: '+user.uid+ ' Token: '+user.token);
+          $('#loginModal').modal('hide');
+          $scope.loggedInUserUID=user.uid;
+          $scope.addUserData();
+
+        })
+
+        .catch(function(error){
+          console.log('Inside catch');
+          // $scope.errorReceived=JSON.stringify(error);
+          // $scope.err=JSON.parse($scope.errorReceived);
+          // $scope.errr=Object.values($scope.err);
+          // console.log('Error--'+ $scope.err);
+          var errorCode = error.code;
+          var errorMessage = error.message;
+
+              if (errorCode == 'auth/wrong-password') {
+                  alert('Wrong password.');
+              } else {
+                  alert(errorMessage);         
+              }
+              console.log(error);
+                  });
+
+      }
+
+      $scope.addUserData=function() {
+        firebase.database().ref('users/' + $scope.loggedInUserUID).set({
+          uid: $scope.loggedInUserUID,
+          fname: $scope.firstname,
+          lname: $scope.lastname,
+          phone: $scope.number
+        }).then(function(rootRef){
+
+          console.log('Added data ');
+          
+          $scope.firstname='';
+          $scope.lastname='';
+          $scope.phone='';
+          $scope.email='';
+          $scope.password='';
+          $('#itemAddedModal').modal();
+        });
+      };  
+
+      $('#itemAddedModal').on('hidden.bs.modal', function () {
+        window.location='../index.html';
+      })
+
+      
+
+    }]);
+  </script>
+</head>
+
+
+<body class="registration-body">
+
+  <!-- Navbar Starts-->
+  <nav class="navbar navbar-default navbar-inverse" style="margin-bottom: 0px;border-radius: 0px;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" id="step-one" href="../index.html" style="color:#dcbd2f;font-size: 20px;font-weight: bold;"><span class="glyphicon glyphicon-screenshot" style="color: #dcbd2f;margin-right: 5px;"></span>NUFinder</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+
+          <li class="dropdown">
+           <a href="../index.html">Home</a>
+         </li>
+
+         <li class="dropdown" id="step-two">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="reportItem.html">Report Found Items</a></li>
+           </ul>
+         </li>
+
+         <li class="dropdown" id="step-three">
+           <a href="search.html">Search Item</a>
+         </li>
+
+         <li class="dropdown">
+           <a href="userStories.html">User Stories</a>
+         </li>  
+
+         <li class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href ="feedback.html">Feedback</a></li>
+             <li role="separator" class="divider"></li>
+             <li><a href ="contactus.html">Contact Us</a></li>
+           </ul>
+         </li>   
+         <li class="dropdown">
+          <a href="userRegistration.html">Register</a>
+        </li> 
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Navbar Ends-->
+
+<div class="page">
+  <section class="card register" ng-app="myApp"
+  ng-controller="RegistrationController">
+
+  
+  <form name="myform"
+  ng-submit="register()"
+  novalidate>
+
+  <div class="textintro">
+    <h1 id="contact-info">Contact information</h1>
+    <h3>Please fill out the following form</h3>
+    <p ng-show="message">{{ message }}</p>
+  </div>
+
+  <fieldset>
+    <p>First Name <span style="color:red;">*</span> : </p>
+    <input type="text" name="firstname" class="input-r" class="input-r"
+    placeholder="First Name"
+    ng-model="firstname" ng-pattern="regCheckName"
+    required>
+    <p class="error validationerror" ng-show="myform.firstname.$error.required">You must fill out your first name.</p>
+    <p class="error validationerror" ng-show="myform.firstname.$error.pattern"> Please enter a valid first name.</p>
+
+      <p>Last Name <span style="color:red;">*</span> : </p>
+      <input type="text" name="lastname" class="input-r"
+      placeholder="Last Name"
+      ng-model="lastname"
+      ng-pattern="regCheckName"
+      required>
+      <p class="error validationerror" ng-show="myform.lastname.$error.required">
+        You must fill out your last name.</p>
+        <p class="error validationerror" ng-show="myform.lastname.$error.pattern"> Please enter a valid last name.</p>
+
+
+        <p>Email <span style="color:red;">*</span> : </p>
+        <input type="email" name="email" class="input-r"
+        placeholder="Email"
+        ng-model="email"
+        ng-pattern="regCheckEmail"
+        required>
+        <p class="error validationerror" ng-show="myform.email.$error.required">
+          You must enter your email address.</p>
+          <p class="error validationerror" ng-show="myform.email.$error.pattern"> Please enter a valid email address.</p>
+
+
+          <p>Password <span style="color:red;">*</span> : </p>
+          <input type="password" name="password" class="input-r"
+          placeholder="Password"
+          ng-model="password"
+          ng-required="true"
+          ng-minlength="6"
+          required>
+          <p class="error validationerror" ng-show="myform.password.$error.required">
+          You must enter your password.</p>
+          <p class="error validationerror" ng-show="myform.password.$invalid && myform.password.$touched">
+            Password must be at least 6 characters</p>
+
+            <p>Contact Number <span style="color:red;">*</span> : </p>
+            <input type="text" name="number" class="input-r"
+            placeholder="Contact Number"
+            ng-model="number"
+            ng-required="true"
+            ng-minlength="10"
+            ng-maxlength="10"
+            ng-pattern="regCheckPhone"
+            required>
+            <p class="error validationerror"  ng-show="myform.number.$error.required">
+             You must enter your phone number.</p>
+             <p class="error validationerror"  ng-show="((myform.number.$error.minlength ||
+             myform.number.$error.maxlength) &&
+             myform.number.$dirty) ">
+             Phone number should be 10 digits </p>
+             <p class="error validationerror" ng-show="myform.number.$error.pattern"> Please enter a valid phone number.</p>
+
+           </fieldset>
+
+           <button type="submit" class="btn button-submit" data-ng-click="createNewEmailUser();">Submit</button>
+         </form>
+       </section>
+     </div>
+     <footer class="footer-distributed">
+      <div class="footer-left">
+        <h3>NU<span>Finder</span></h3>
+        <p class="footer-links">
+          <a href="../index.html">Home</a>
+          ·
+          <a href="userStories.html">Testimonials</a>
+          ·
+          <a href="contactus.html">Contact</a>
+        </p>
+        <p class="footer-company-name">NUFinder © 2016</p>
+      </div>
+      <div class="footer-center">
+        <div>
+          <i class="fa fa-map-marker"></i>
+          <p><span>360 Huntington Ave</span> Boston, MA 02115</p>
+        </div>
+        <div>
+          <i class="fa fa-phone"></i>
+          <p>+1 8575 2206 12</p>
+        </div>
+        <div>
+          <i class="fa fa-envelope"></i>
+          <p><a href="mailto:meanstackdevelopers@gmail.com">meanstackdevelopers@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="footer-right">
+        <p class="footer-company-about">
+          <span>About the company</span>
+          We at NUFinder, aim to help the Northeastern community by locating and reporting all types of lost items.
+        </p>
+        <div class="footer-icons">
+          <a href="https://www.facebook.com/"><img src="../images/facebook.png"></a>
+          <a href="https://www.twitter.com"><img src="../images/twitter.png"></a>
+          <a href="https://www.linkedin.com"><img src="../images/linkedin.png"></a>
+          <a href="https://www.github.io"><img src="../images/github.png"></a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal fade" id="itemAddedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h3 class="modal-title"><span>User creation successfull!</span></h4>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default"  data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </body>
+    </html>

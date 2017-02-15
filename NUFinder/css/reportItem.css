@@ -1,0 +1,24 @@
+ html,body{
+  height: 100%;
+  margin: 0;
+}
+
+#map{
+  height: 100%;
+  margin: 0;
+}
+
+#autocomplete{
+  width: 100%;
+}
+
+form.ng-pristine {
+  background-color:white;
+}
+
+input.ng-valid {
+  background-color: lightgreen;
+}
+input.ng-touched.ng-invalid {
+  background-color: pink; 
+}

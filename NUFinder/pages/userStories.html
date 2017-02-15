@@ -1,0 +1,167 @@
+<!doctype html>
+<html ng-app="myApp" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Stories - NUFinder</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap-3.3.7.css">
+  <link rel="stylesheet" href="../css/style_UR_US.css">
+  <script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+  <script type="text/javascript" src="../js/angular-1.4.4.js"></script>
+  <script type="text/javascript" src="../js/bootstrap-3.3.7.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/userStories.css">
+  <link rel="stylesheet" type="text/css" href="../css/footer.css">
+  <link rel="shortcut icon" href="../images/logo.jpg" type="image/jpg"/>
+
+  <script type="text/javascript">
+    var myApp = angular.module('myApp', []);
+
+    myApp.controller('myController', ['$scope', function($scope) {
+
+      $scope.userStories=[
+      {
+        "name":"Barot Bellingham",
+        "shortname":"Left my luggage in the shuttle from Reagan to the Sheraton Pentagon City last week. Thanks this website for the call letting me know I left it!! I called the hotel, and they put my luggage aside for me. Great service!!!"
+      },
+      {
+        "name":"Mike G. Ferrar II",
+        "shortname":"My friend lost his keys for 1 1/2 weeks before I called CAA, remembering that he put a tag on his keys. ( good for scratching tickets with he said ) We recovered the keys from a friendly guy, Adam. He was so happy to see us as we were to see him.  They recovered my keys and was so polite on the phone and Adam was super. Thanks again for your AWESOME SERVICE."
+      },
+      {
+        "name":"Williams G. Spears II",
+        "shortname":"Lost my keys in Kent building supplies and because I registered my keys they called me promptly. YAY IM SOOO PLEASED !!"
+      },
+      {
+        "name":"Jonathan G. Meyer",
+        "shortname":"My friend lost his keys for 1 1/2 weeks before I called CAA, remembering that he put a tag on his keys. ( good for scratching tickets with he said ) We recovered the keys from a friendly guy, Adam. They recovered my keys and was so polite on the phone and Adam was super. Thanks again for your AWESOME SERVICE. Joy Barnes from Welland , ON"
+      }
+      ];
+    }]);
+
+  </script>
+</head>
+
+<body ng-controller="myController">
+  <nav class="navbar navbar-default navbar-inverse" style="margin-bottom: 0px;border-radius: 0px;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" id="step-one" href="../index.html" style="color:#dcbd2f;font-size: 20px;font-weight: bold;"><span class="glyphicon glyphicon-screenshot" style="color: #dcbd2f;margin-right: 5px;"></span>NUFinder</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+
+          <li class="dropdown">
+           <a href="../index.html">Home</a>
+         </li>
+
+         <li class="dropdown" id="step-two">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="reportItem.html">Report Found Items</a></li>
+           </ul>
+         </li>
+
+         <li class="dropdown" id="step-three">
+           <a href="search.html">Search Item</a>
+         </li>
+
+         <li class="dropdown">
+           <a href="userStories.html">User Stories</a>
+         </li>  
+
+         <li class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href ="feedback.html">Feedback</a></li>
+             <li role="separator" class="divider"></li>
+             <li><a href ="contactus.html">Contact Us</a></li>
+           </ul>
+         </li>   
+         <li class="dropdown">
+          <a href="userRegistration.html">Register</a>
+        </li> 
+      </ul>
+    </div>
+  </div>
+</nav>
+<div id="page">
+  <div class="testimonial-header">
+    <div class="container">
+      <h2 class="testimonial-title">
+       Have we helped you? We're listening...
+     </h2>
+   </div>
+ </div>
+
+ <div class="container content">
+  <div class="row">
+    <div class="col-md-12 col-md-12 col-lg-12" ng-repeat="x in userStories" style="width: 48%;margin-bottom: 20px;">
+      <div class="testimonials" class="col-md-6 col-lg-6">
+        <div class="active item" >
+          <blockquote><p>{{x.shortname}}</p></blockquote>
+          <div class="carousel-info">
+            <img alt="" src="../images/userStories.png" class="pull-left">
+            <div class="pull-left">
+              <span class="testimonials-name">{{x.name}}</span>
+              <span class="testimonials-post">Website User</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<br>
+<br>
+<footer class="footer-distributed">
+      <div class="footer-left">
+        <h3>NU<span>Finder</span></h3>
+        <p class="footer-links">
+          <a href="../index.html">Home</a>
+          ·
+          <a href="userStories.html">Testimonials</a>
+          ·
+          <a href="contactus.html">Contact</a>
+        </p>
+        <p class="footer-company-name">NUFinder © 2016</p>
+      </div>
+      <div class="footer-center">
+        <div>
+          <i class="fa fa-map-marker"></i>
+          <p><span>360 Huntington Ave</span> Boston, MA 02115</p>
+        </div>
+        <div>
+          <i class="fa fa-phone"></i>
+          <p>+1 8575 2206 12</p>
+        </div>
+        <div>
+          <i class="fa fa-envelope"></i>
+          <p><a href="mailto:meanstackdevelopers@gmail.com">meanstackdevelopers@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="footer-right">
+        <p class="footer-company-about">
+          <span>About the company</span>
+          We at NUFinder, aim to help the Northeastern community by locating and reporting all types of lost items.
+        </p>
+        <div class="footer-icons">
+          <a href="https://www.facebook.com/"><img src="../images/facebook.png"></a>
+          <a href="https://www.twitter.com"><img src="../images/twitter.png"></a>
+          <a href="https://www.linkedin.com"><img src="../images/linkedin.png"></a>
+          <a href="https://www.github.io"><img src="../images/github.png"></a>
+        </div>
+      </div>
+    </footer>
+</body>
+
+</html>

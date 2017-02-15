@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Search Item - NUFinder</title>
+
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-3.3.7.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="shortcut icon" href="../images/logo.jpg" type="image/jpg"/>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+	<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+	<script type="text/javascript" src="../js/angular-1.4.4.js"></script>
+	<script src="../js/new/angularfire.js"></script>
+	<script src="../js/search.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/footer.css">
+	<link rel="stylesheet" type="text/css" href="../css/search.css">
+</head>
+<body>
+
+
+	<!-- Navbar Starts-->
+	<nav class="navbar navbar-default navbar-inverse" style="margin-bottom: 0px;border-radius: 0px;">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" id="step-one" href="../index.html" style="color:#dcbd2f;font-size: 20px;font-weight: bold;"><span class="glyphicon glyphicon-screenshot" style="color: #dcbd2f;margin-right: 5px;"></span>NUFinder</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+
+					<li class="dropdown">
+						<a href="../index.html">Home</a>
+					</li>
+
+					<li class="dropdown" id="step-two">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="reportItem.html">Report Found Items</a></li>
+						</ul>
+					</li>
+
+					<li class="dropdown" id="step-three">
+						<a href="search.html">Search Item</a>
+					</li>
+
+					<li class="dropdown">
+						<a href="userStories.html">User Stories</a>
+					</li>  
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href ="feedback.html">Feedback</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href ="contactus.html">Contact Us</a></li>
+						</ul>
+					</li>   
+					<li class="dropdown">
+						<a href="userRegistration.html">Register</a>
+					</li> 
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div ng-app = "myApp">
+		<div ng-controller="searchFormController">
+			<div class="row" style="padding: 50px; margin: auto;">
+				<div class="col-md-6">
+					<form name="searchForm" style="border-radius: 5px;">
+						<div class="form-group">
+							<h3>Search for Lost Item</h3><br><br>
+							<label for="category">Category:*</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+								<select name="itemCategory" id="itemCategory" class="form-control"  ng-model="itemCategory" required="required">
+									<option selected="selected" value="">~Select One~</option>
+									<option value="Architectural, Engineering, Design Print">Architectural, Engineering, Design Print</option>
+									<option value="Assorted Cloths, Laundry Bags">Assorted Cloths, Laundry Bags</option>
+									<option value="Backpack, Bookbag, Knapsack">Backpack, Bookbag, Knapsack</option>
+									<option value="Beepers, Pagers">Beepers, Pagers</option>
+									<option value="Bicycles">Bicycles</option>
+									<option value="Blazers, Coats, Jackets, Overcoats">Blazers, Coats, Jackets, Overcoats</option>
+									<option value="Books, Journals, Magazines">Books, Journals, Magazines</option>
+									<option value="Bracelets">Bracelets</option>
+									<option value="Briefcase">Briefcase</option>
+									<option value="Brooches, Medals, Pins">Brooches, Medals, Pins</option>
+									<option value="Cameras - Still, Digital, Video">Cameras - Still, Digital, Video</option>
+									<option value="Canes, Crutches, Walkers">Canes, Crutches, Walkers</option>
+									<option value="Canvas, Duffel, Sports Bag">Canvas, Duffel, Sports Bag</option>
+									<option value="CD, DVD, MD, MP3 Players, Cassette Players">CD, DVD, MD, MP3 Players, Cassette Players</option>
+									<option value="Cellular, Mobile Phones, Phones, Walkie Talkies">Cellular, Mobile Phones, Phones, Walkie Talkies</option>
+									<option value="Certificates, Degrees, Diplomas, Titles">Certificates, Degrees, Diplomas, Titles</option>
+									<option value="Chains, Necklaces">Chains, Necklaces</option>
+									<option value="Check, Money Order">Check, Money Order</option>
+									<option value="Computer Disks, Memory Sticks/Cards, etc">Computer Disks, Memory Sticks/Cards, etc</option>
+									<option value="Computers">Computers</option>
+									<option value="Daytimers, Organizers">Daytimers, Organizers</option>
+									<option value="Dental Related">Dental Related</option>
+									<option value="Dopp Kit, Makeup Bag">Dopp Kit, Makeup Bag</option>
+									<option value="Drawings, Antique Prints">Drawings, Antique Prints</option>
+									<option value="Dresses, Gowns, Skirts">Dresses, Gowns, Skirts</option>
+									<option value="Earrings">Earrings</option>
+									<option value="Electronic - Miscellaneous Other">Electronic - Miscellaneous Other</option>
+									<option value="Electronic Organizers - Palm Pilot, Blackberry, etc">Electronic Organizers - Palm Pilot, Blackberry, etc</option>
+									<option value="Film - 35mm, Digital, Negatives">Film - 35mm, Digital, Negatives</option>
+									<option value="Furniture">Furniture</option>
+									<option value="Garment Bags">Garment Bags</option>
+									<option value="Glasses, Sunglasses, Cases and Binoculars">Glasses, Sunglasses, Cases and Binoculars</option>
+									<option value="Gloves, Mittens, Scarfs">Gloves, Mittens, Scarfs</option>
+									<option value="GPS, Radar Detector">GPS, Radar Detector</option>
+									<option value="Hardware, Tools">Hardware, Tools</option>
+									<option value="Hats">Hats</option>
+									<option value="Hearing Aids">Hearing Aids</option>
+									<option value="Household Products">Household Products</option>
+									<option value="IDs, Credit Cards, Licenses, Passports">IDs, Credit Cards, Licenses, Passports</option>
+									<option value="Jewelry - Miscellaneous">Jewelry - Miscellaneous</option>
+									<option value="Keys">Keys</option>
+									<option value="Laptop Case">Laptop Case</option>
+									<option value="Lighters, Pipes, Smoking Related">Lighters, Pipes, Smoking Related</option>
+									<option value="Luggage">Luggage</option>
+									<option value="Media - Music: Cassettes, CDs, Records">Media - Music: Cassettes, CDs, Records</option>
+									<option value="Media - Video: DVDs, Tapes">Media - Video: DVDs, Tapes</option>
+									<option value="Medical Devices, Accessories">Medical Devices, Accessories</option>
+									<option value="Money">Money</option>
+									<option value="Other">Other</option>
+									<option value="Paintings">Paintings</option>
+									<option value="Pants">Pants</option>
+									<option value="Pens">Pens</option>
+									<option value="Personal Accessories - Other">Personal Accessories - Other</option>
+									<option value="Photographs, Photo Albums">Photographs, Photo Albums</option>
+									<option value="Pocketbooks, Handbags, Purses">Pocketbooks, Handbags, Purses</option>
+									<option value="Radios, Televisions, VCRs">Radios, Televisions, VCRs</option>
+									<option value="Rings">Rings</option>
+									<option value="Sandals, Shoes">Sandals, Shoes</option>
+									<option value="Sculptures, Statues">Sculptures, Statues</option>
+									<option value="Shirts, Blouses">Shirts, Blouses</option>
+									<option value="Skateboard, Razor Scoter">Skateboard, Razor Scoter</option>
+									<option value="Sports - Miscellaneous Other">Sports - Miscellaneous Other</option>
+									<option value="Suitcase">Suitcase</option>
+									<option value="Sweaters, Sweatshirts">Sweaters, Sweatshirts</option>
+									<option value="Tickets - Concert/Theatre">Tickets - Concert/Theatre</option>
+									<option value="Tickets - Sports Event">Tickets - Sports Event</option>
+									<option value="Tickets - Travel">Tickets - Travel</option>
+									<option value="Umbrellas">Umbrellas</option>
+									<option value="Video Games">Video Games</option>
+									<option value="Video Games Systems">Video Games Systems</option>
+									<option value="Wallet">Wallet</option>
+									<option value="Watches">Watches</option>
+									<option value="Wheelchair">Wheelchair</option>
+									<option value="Other">Other</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+
+						</div>
+						<div class="form-group">
+							<label for="what">What:*</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+								<input type="text" class="form-control inputStyle"  ng-model="what" name="what" id="what" placeholder="Enter the details of what you have lost" required="required" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="where">Where:*</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+								<input type="text" name="where" class="form-control"  id="where" ng-model="where" placeholder="Enter the details of where you have lost" required="required">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="where">When:*</label>
+							<div class="input-group">
+								<div class="input-group-addon"><span class="glyphicon glyphicon-th"></span>
+								</div> 
+								<input type="text" name="when" class="form-control datepicker" data-date-end-date="0d" id="when" ng-model="when" placeholder="MM/DD/YYY" required="required">
+
+							</div>
+						</div>
+						<hr>
+
+						<div class="form-group">
+							<h3 class="form-group">Enter Your Information</h3><br>
+							<label for="firstName">First Name:*</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								<input type="text"  class="form-control"  id="firstName" name="firstName" ng-model="firstName" placeholder="Enter your first name" required="required">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="lastName">Last Name:*</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								<input type="text"  class="form-control"  id="lastName" name="lastName" ng-model="lastName" placeholder="Enter your last name" required="required">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="email">Email:*</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+								<input type="email" id="emailId" class="form-control" name="emailId" placeholder="Enter your email address"   ng-model="email" required="required">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="phoneNumber">Phone:*</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+								<input type="Phone" name="phoneNumber" class="form-control"  placeholder="Contact number(10 digits)" ng-minlength="10" ng-maxlength="10" ng-model="phoneNumber" required="required">
+							</div>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary" id="submitBtn">
+								Submit</button>
+							</div>
+						</form>  
+					</div>
+
+					<div class="col-md-6">
+						<div class="panel panel-default" style="overflow:auto; max-height: 975px;">
+							<div style="padding: 15px;" class="text-center">
+								<label><strong style="font: 24px bold;">Search Lost Items By All Categories</strong></label>
+								<input class="form-control text-center" style="background-color: white;" type="text" ng-model="searchText" name="searchText" id="searchText" placeholder="Quick Search">
+							</div>
+							<div class="well" ng-repeat="item in itemKeys | orderBy: '-itemDate' | filter: searchText" style="width: 48%; float: left;margin:5px;" >
+								<div class="panel-heading"><h4 style="margin-bottom: 0px;">{{item.itemName}}</h4></div>
+								<div class="panel-body" style="margin-top: 0px;">
+									<div>
+										<p><span class="glyphicon glyphicon-th" style="margin:10px;"></span><span ng-show="item.itemDate!=null">{{item.itemDate}}</span><span ng-show="item.itemDate==null">Date Not available</span></p>
+										<p><span class="glyphicon glyphicon-map-marker" style="color: #f00;margin:10px;"></span><span ng-show="item.itemLocation!=null">{{item.itemLocation}}</span><span ng-show="item.itemLocation==null">Location Not available</span></p>
+										<!-- <p>Category:{{item.category}}</p> -->
+									</div>
+									<div>
+										<p><span class="glyphicon glyphicon-user" style="margin:10px;"></span><span ng-show="item.itemCreatedBy!=null">{{item.itemCreatedBy}}</span><span ng-show="item.itemCreatedBy==null">Name Not available</span></p>
+										<p><span class="glyphicon glyphicon-earphone" style="color: #00f;margin:10px;"></span><span ng-show="item.itemCreatedContact!=null">{{item.itemCreatedContact}}</span><span ng-show="item.itemCreatedContact==null">Contact Not available</span></p>	
+									</div>
+									
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span>Search Results</span>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							</div>
+							<div class="modal-body" style="padding: 0px;" >
+								<div style="overflow: auto;max-height: 500px;padding: 20px;">
+									<div class="well" id="repeatingDiv" ng-repeat="item in itemKeys | filter:whatSearched" style="padding: 20px;">
+										<h4 style="margin-bottom: 0px;">{{item.itemName}}</h4>
+										<div>
+											<p><span class="glyphicon glyphicon-th" style="margin:10px;"></span><span ng-show="item.itemDate!=null">{{item.itemDate}}</span><span ng-show="item.itemDate==null">Date Not available</span></p>
+											<p><span class="glyphicon glyphicon-map-marker" style="color: #f00;margin:10px;"></span><span ng-show="item.itemLocation!=null">{{item.itemLocation}}</span><span ng-show="item.itemLocation==null">Location Not available</span></p>
+										</div>
+										<div>
+											<p><span class="glyphicon glyphicon-user" style="margin:10px;"></span><span ng-show="item.itemCreatedBy!=null">{{item.itemCreatedBy}}</span><span ng-show="item.itemCreatedBy==null">Name Not available</span></p>
+											<p><span class="glyphicon glyphicon-earphone" style="color: #00f;margin:10px;"></span><span ng-show="item.itemCreatedContact!=null">{{item.itemCreatedContact}}</span><span ng-show="item.itemCreatedContact==null">Contact Not available</span></p>	
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+<footer class="footer-distributed">
+      <div class="footer-left">
+        <h3>NU<span>Finder</span></h3>
+        <p class="footer-links">
+          <a href="../index.html">Home</a>
+          ·
+          <a href="userStories.html">Testimonials</a>
+          ·
+          <a href="contactus.html">Contact</a>
+        </p>
+        <p class="footer-company-name">NUFinder © 2016</p>
+      </div>
+      <div class="footer-center">
+        <div>
+          <i class="fa fa-map-marker"></i>
+          <p><span>360 Huntington Ave</span> Boston, MA 02115</p>
+        </div>
+        <div>
+          <i class="fa fa-phone"></i>
+          <p>+1 8575 2206 12</p>
+        </div>
+        <div>
+          <i class="fa fa-envelope"></i>
+          <p><a href="mailto:meanstackdevelopers@gmail.com">meanstackdevelopers@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="footer-right">
+        <p class="footer-company-about">
+          <span>About the company</span>
+          We at NUFinder, aim to help the Northeastern community by locating and reporting all types of lost items.
+        </p>
+        <div class="footer-icons">
+          <a href="https://www.facebook.com/"><img src="../images/facebook.png"></a>
+          <a href="https://www.twitter.com"><img src="../images/twitter.png"></a>
+          <a href="https://www.linkedin.com"><img src="../images/linkedin.png"></a>
+          <a href="https://www.github.io"><img src="../images/github.png"></a>
+        </div>
+      </div>
+    </footer>
+	</body>
+	</html>
