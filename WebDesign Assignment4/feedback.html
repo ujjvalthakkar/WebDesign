@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NorthYeastern Cafe-A lot happens over a coffee!</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles/style.css" type="text/css">
+	<script type="text/javascript" src="scripts/script.js"></script>	
+</head>
+
+<body>
+	<div id="webContainer">
+		<div id="logoMenuWrapper1">
+			<a href ="home.html">
+				<img id="logo" src="Images/Logo1.jpg" alt = "NorthYeastern Logo"/>
+			</a> 
+			<div class="registrations">
+            <a href="registrations.html">Register with us!!</a><br><br>
+            <a href="gallery.html" >News,Events and Gallery</a>
+        </div>
+			<h2>A lot happens over a coffee!</h2>
+		</div>
+		<div id="menu1">
+			<nav>
+				<ul>
+					<li>
+						<a href="home.html"><span>Home</span></a>
+					</li>
+					<li>
+						<a href="menu.html"><span>Menu</span></a>
+					</li>
+					<li>
+						<a href="openings.html"><span>Careers</span></a>
+					</li>
+					<li>
+						<a href="aboutus.html"><span>About Us</span></a>
+					</li>
+					<li>
+						<a href="contact.html"><span>Contact Us</span></a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="bodyWrapper1">
+			<div class="feedbackBody">
+				<form action="thankyou.html" onSubmit="return validateFeedbackForm(this);" name="form" method="POST">
+					<h3>Please provide us your valuable feedback and suggestions below! </h3>
+					<i>All fields are mandatory</i></br>
+					Your Name*: <br>
+					<input type="text" name="username"><br>
+					<br>
+
+					Your Email*: <br>
+					<input type="text" name="email" onblur="validateEmail(this);"><br>
+					<br>
+
+					Your Phone*: <br>
+					<input type="text" name="phone"><br>
+					<br>
+
+					Your Comments/Feedback*: <br>
+					<textarea name="comments" rows="10" cols="50"></textarea><br>
+					<input type="submit" value="Submit">
+				</form> 
+			</div>
+		</div>
+		<div class="copyrightWrapper1">
+			<footer>
+				<p>Copyright &copy; 2016 NorthYeastern Cafe | All Rights Reserved | &nbsp;<a href="mailto:ujjvalthakkarh@gmail.com">Email US</a>
+				</p>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>

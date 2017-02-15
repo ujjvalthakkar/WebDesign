@@ -1,0 +1,176 @@
+body{margin:0;padding:0; border: 0;height: 100%;max-height: 100%;font-size:14px; font-family:Georgia, "Times New Roman", Times, serif; color:#000000; background-color:#FFECB3;}
+
+#webContainer{
+	height:100%;
+	margin-top:0px;
+    margin-left:80px;margin-right:60px;display:block; width:1200px;padding:0px;	
+}
+
+#logoMenuWrapper1{
+	height:125px;
+	width:100%;
+	padding:0px;
+	border-right:1px solid black;
+	border-left:1px solid black;
+	border-bottom:1px solid black;
+	float:left;
+}
+
+#logoMenuWrapper1 h2{margin:0px;font-size:15px;}
+
+#logo{
+	height:100px;
+	width :215px;
+}
+
+.coffeshopHover{
+    
+}
+.registrations{
+    font-weight: bold;
+    float: right;
+    border: 0px solid black;
+    width: 300px;
+    height: 125px;
+}
+
+#menu1{
+	height:30px;
+	width:100%;
+	margin:0px;
+	padding:0px;
+	border-right:1px solid black;
+	border-left:1px solid black;
+	float:left;
+	background-color:#FFE082;
+}
+
+#menu1 nav{display:block;height:20px;margin:0; padding:0px 0px 0px 0px;font-weight:bold;}
+#menu1 nav ul{display:inline;padding-left:0px;height: 20px;}
+#menu1 nav li{display:inline;font-size:17px;}
+#menu1 nav li a{margin-right:2px;padding-left:5px;padding-top:5px;padding-bottom:5px;text-decoration:none;color:yellow;background:transparent url(button.gif)no-repeat top left; float:left;}
+
+#menu1 nav li a span{
+	margin:0px;
+    padding: 4px 5px 4px 0px;
+}
+
+#menu1 nav li a:hover,#menu1 nav li a:visited {text-decoration:underline;color:yellow;}
+
+.bodyWrapper1{display:block; padding:0px; margin:0;border:1px solid black;width:100%;height:475px;float:left;}
+.copyrightWrapper1{display:block;padding:0; margin:0;border-left:1px blue; border-right:1px solid black;
+	border-left:1px solid black;width:100%;height:20px;float:left;text-align:center;font-weight:bold;}
+    .copyrightWrapper1 footer p{padding:0; margin:0;}
+    .copyrightWrapper1 footer {padding:0; margin:0;}
+    .copyrightWrapper1 a{padding:0;margin:0;text-decoration:none;}
+    .left{
+        display:block;
+        font-size:17px;
+        height:475px;
+        width:50%;
+        float:left;
+        margin-left:0px;
+        border-right:1px solid black;
+    }
+
+    .right{
+        height:475px;
+        width:596px;
+        float:left;	
+        margin-right:0px;
+        border-left:1px solid black;
+    }
+
+    .right ul{list-style-type:none;}
+
+    .openingbody{overflow:scroll;margin:0px;display:block;width:100%;height:475px;padding:0px;}
+
+    .feedbackBody{
+        margin:0px;display: block;
+        float:left;padding-left:20px;padding-top:20px;overflow:scroll;width:1180px;height:455px;
+    }
+
+    .registerationBody{
+        margin:0px;display: block;
+        float:left;padding-left:20px;padding-top:20px;overflow:scroll;width:1180px;height:455px;
+    }
+
+    .fieldset{
+        overflow: scroll;
+        margin-left: auto ;
+        margin-right: auto ;
+        border:black 2px solid;height:425px;width:400px;
+    }
+    /*------------------------------------------------------------------------------------------*/
+    .logoMenuWrapper{margin-left:61px;margin-right:60px;display:block; width:1202px; height:100px;padding:0px;border:1px solid pink;}
+    .logoMenuWrapper h2{font-size:12px;}
+
+    .menu{border:1px solid pink;margin-left:61px;margin-right:101px;padding:7px 0px 0px 0px;height:25px;background-color:#353535;color:#FFF2CC;border-top:1px solid pink;border-bottom:1px solid pink;}
+    .menu nav{display:block;margin:0; padding:5px 0 0 5px;font-weight:bold;color:#FFF2CC;}
+    .menu nav ul{display:inline; padding:0;}
+    .menu nav li{display:inline; color:#FFF2CC;margin-right:10px; text-transform:uppercase;font-size:15px;}
+    .menu nav li a{color:white;text-decoration:none;}
+    .menu nav li a:hover{color:#EF6C00; background-color:#333333;text-decoration:none;}
+
+    .bodyWrapper{display:block; width:1364px; height:475px;padding-top:0px; margin:0 auto;}
+
+
+
+
+    #venue{font-weight:bold;color:#EF6C00;font-size:18px;}
+    #dateTime{font-weight:bold;color:#EF6C00;font-size:14px;}
+
+    .copyrightWrapper{margin-left:61px;margin-right:0px;text-align:center;font-weight:bold; color:white;width:1202px; padding-top:3px; border:1px solid pink;background-color:#353535;}
+    .copyrightWrapper a{text-decoration:none;}
+
+    .contactbody{margin-left:61px;margin-right:60px;display:block; width:1202px; height:475px;padding:0px;border:1px solid pink;}
+    .contactbody h2,p,address{padding-left:10px;}
+
+    .aboutbody{margin-left:61px;margin-right:60px;display:block; width:1202px; height:475px;padding:0px;border:1px solid pink;}
+
+    .menubody{margin-left:61px;margin-right:60px;display:block; width:1202px; height:475px;padding:0px;border:1px solid pink;}
+    .menuLeft{float:left;display:block;font-size:14px;height:475px;width:10%;border-right:1px solid black;}
+    .menuLeft ul{ margin:0;padding:0;list-style-type:none;}
+    .menuLeft ul li{ padding:0; font-size:18px;}
+    .menuLeft ul li a{padding:0; text-decoration:none;font-weight:bold;}
+    .menuRight{margin:0px; overflow:scroll;float:left;display:block;font-size:14px;height:475px;width:1079px;}
+    .menuRight h1,h3,h5,ul,p,i{margin-left:10px;}
+    .menuRight h3{font-size:18px;color:black;}
+    .menuLft{float:left;display:block;font-size:14px;height:475px;width:13%;border-right:1px solid #4A148C;padding-left:15px;padding-right: 0px;}
+    .menuRyt{margin:0px; overflow:scroll;float:left;display:block;font-size:14px;height:475px;width:1028px;}
+    #menuTable{
+        margin-left:10px;
+    }
+
+    table{
+        width:400px;
+        border: 2px solid #01579B;
+        border-collapse: collapse;
+        font-family:Helvetica, sans-serif;
+        text-align:left;
+    }
+
+    td{
+        padding: 7px 0px 7px 2px;
+
+
+    }
+    tr:hover, tbody tr:hover{
+        background-color:#CDDC39;
+    }
+    thead tr{
+        background-color:#01579B;
+        color:#FFF;
+        text-transform:uppercase;
+        font-weight:bold;	
+    }
+    tbody tr:nth-of-type(2n){
+        color:black;
+        background-color:#B3E5FC;
+        text-align:left;
+    }
+
+    tbody tr:nth-of-type(2n+1){
+        color:black;
+        background-color:#E1F5FE;
+    }
